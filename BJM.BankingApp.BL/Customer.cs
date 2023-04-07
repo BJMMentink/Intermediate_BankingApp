@@ -2,6 +2,6 @@
 {
     public class Customer : Person
     {
-        public int CustomerID { get; set; }
+        public int CustomerID() { return 0; }
     }
 }

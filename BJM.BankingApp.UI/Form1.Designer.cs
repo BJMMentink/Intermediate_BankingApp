@@ -37,10 +37,10 @@
             this.lblAgeDisplay = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtfName = new System.Windows.Forms.TextBox();
+            this.txtlName = new System.Windows.Forms.TextBox();
+            this.txtSSN = new System.Windows.Forms.TextBox();
+            this.txtBDate = new System.Windows.Forms.TextBox();
             this.lblDeposits = new System.Windows.Forms.Label();
             this.lblWithdrawals = new System.Windows.Forms.Label();
             this.dgvDeposits = new System.Windows.Forms.DataGridView();
@@ -57,6 +57,7 @@
             this.lbxCustomers.Name = "lbxCustomers";
             this.lbxCustomers.Size = new System.Drawing.Size(227, 154);
             this.lbxCustomers.TabIndex = 0;
+            this.lbxCustomers.SelectedIndexChanged += new System.EventHandler(this.lbxCustomers_SelectedIndexChanged);
             // 
             // lblIDDisplay
             // 
@@ -128,33 +129,33 @@
             this.lblAge.Size = new System.Drawing.Size(0, 15);
             this.lblAge.TabIndex = 8;
             // 
-            // textBox1
+            // txtfName
             // 
-            this.textBox1.Location = new System.Drawing.Point(321, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 9;
+            this.txtfName.Location = new System.Drawing.Point(321, 38);
+            this.txtfName.Name = "txtfName";
+            this.txtfName.Size = new System.Drawing.Size(100, 23);
+            this.txtfName.TabIndex = 9;
             // 
-            // textBox2
+            // txtlName
             // 
-            this.textBox2.Location = new System.Drawing.Point(321, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 10;
+            this.txtlName.Location = new System.Drawing.Point(321, 66);
+            this.txtlName.Name = "txtlName";
+            this.txtlName.Size = new System.Drawing.Size(100, 23);
+            this.txtlName.TabIndex = 10;
             // 
-            // textBox3
+            // txtSSN
             // 
-            this.textBox3.Location = new System.Drawing.Point(321, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 11;
+            this.txtSSN.Location = new System.Drawing.Point(321, 94);
+            this.txtSSN.Name = "txtSSN";
+            this.txtSSN.Size = new System.Drawing.Size(100, 23);
+            this.txtSSN.TabIndex = 11;
             // 
-            // textBox4
+            // txtBDate
             // 
-            this.textBox4.Location = new System.Drawing.Point(321, 122);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 12;
+            this.txtBDate.Location = new System.Drawing.Point(321, 122);
+            this.txtBDate.Name = "txtBDate";
+            this.txtBDate.Size = new System.Drawing.Size(100, 23);
+            this.txtBDate.TabIndex = 12;
             // 
             // lblDeposits
             // 
@@ -201,10 +202,10 @@
             this.Controls.Add(this.dgvDeposits);
             this.Controls.Add(this.lblWithdrawals);
             this.Controls.Add(this.lblDeposits);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBDate);
+            this.Controls.Add(this.txtSSN);
+            this.Controls.Add(this.txtlName);
+            this.Controls.Add(this.txtfName);
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblAgeDisplay);
@@ -234,10 +235,10 @@
         private Label lblAgeDisplay;
         private Label lblID;
         private Label lblAge;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txtfName;
+        private TextBox txtlName;
+        private TextBox txtSSN;
+        private TextBox txtBDate;
         private Label lblDeposits;
         private Label lblWithdrawals;
         private DataGridView dgvDeposits;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJM.BankingApp.BL
 {
-    internal class Withdrawal
+    public class Withdrawal
     {
         public int WithdrawlID { get; set; }
         public double Ammount { get; set; }

@@ -11,11 +11,20 @@ namespace BJM.BankingApp.BL
         public string SSN { get; set; } = "";
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
-        public string FullName { get { return FirstName + " " + LastName; }}
         public int Age
         { 
             get { return (int)((DateTime.Now - BirthDate).TotalDays) / 365; }
         } 
         public DateTime BirthDate { get; set; }
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
+        // methods
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

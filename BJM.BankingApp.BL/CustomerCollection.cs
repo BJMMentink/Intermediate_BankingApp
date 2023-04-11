@@ -29,13 +29,13 @@ namespace BJM.BankingApp.BL
             withdrawal = new Withdrawal();
             withdrawal.WithdrawlID = 1;
             withdrawal.WithdrawlDate = new DateTime(2023, 04, 09);
-            withdrawal.Ammount = 100.55;
+            withdrawal.setDeposit(100.55);
             withdrawalList.Add(withdrawal);
 
             deposit = new Deposit();
             deposit.DepositID = 1;
             deposit.DepositDate = new DateTime(2023, 04, 08);
-            deposit.Ammount = 100.55;
+            deposit.setDeposit(100.55);
             depositList.Add(deposit);
             Add(customer);
 
@@ -53,40 +53,42 @@ namespace BJM.BankingApp.BL
             withdrawal = new Withdrawal();
             withdrawal.WithdrawlID = 1;
             withdrawal.WithdrawlDate = new DateTime(2023, 04, 09);
-            withdrawal.Ammount = 1000.55;
+            withdrawal.setDeposit(1000.55);
             withdrawalList1.Add(withdrawal);
             withdrawal = new Withdrawal();
             withdrawal.WithdrawlID = 2;
             withdrawal.WithdrawlDate = new DateTime(2023, 03, 09);
-            withdrawal.Ammount = 2000.55;
+            withdrawal.setDeposit(2000.55);
             withdrawalList1.Add(withdrawal);
             withdrawal = new Withdrawal();
             withdrawal.WithdrawlID = 3;
             withdrawal.WithdrawlDate = new DateTime(2023, 02, 09);
-            withdrawal.Ammount = 3000.55;
+            withdrawal.setDeposit(3000.55);
             withdrawalList1.Add(withdrawal);
 
             deposit = new Deposit();
             deposit.DepositID = 1;
             deposit.DepositDate = new DateTime(2023, 01, 08);
-            deposit.Ammount = 1001.55;
+            deposit.setDeposit(1001.55);
             depositList1.Add(deposit);
             deposit = new Deposit();
             deposit.DepositID = 2;
             deposit.DepositDate = new DateTime(2023, 01, 03);
-            deposit.Ammount = 2001.55;
+            deposit.setDeposit(2001.55);
             depositList1.Add(deposit);
             deposit = new Deposit();
             deposit.DepositID = 3;
             deposit.DepositDate = new DateTime(2023, 01, 02);
-            deposit.Ammount = 3001.55;
+            deposit.setDeposit(3001.55);
             depositList1.Add(deposit);
             Add(customer);
 
 
 
         }
-        public List<Customer>? Customers { get; set; }
-
+        public void SaveToXml()
+        {
+            //DataAccess.SaveXml(typeof(CustomerCollection), this);
+        }
     }
 }

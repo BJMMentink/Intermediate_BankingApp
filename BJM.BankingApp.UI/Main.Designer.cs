@@ -1,6 +1,6 @@
 ﻿namespace BJM.BankingApp.UI
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -45,6 +45,11 @@
             this.lblWithdrawals = new System.Windows.Forms.Label();
             this.dgvDeposits = new System.Windows.Forms.DataGridView();
             this.dgvWithdrawals = new System.Windows.Forms.DataGridView();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSaveXML = new System.Windows.Forms.Button();
+            this.btnLoadXML = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeposits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWithdrawals)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +60,7 @@
             this.lbxCustomers.ItemHeight = 15;
             this.lbxCustomers.Location = new System.Drawing.Point(13, 13);
             this.lbxCustomers.Name = "lbxCustomers";
-            this.lbxCustomers.Size = new System.Drawing.Size(227, 154);
+            this.lbxCustomers.Size = new System.Drawing.Size(227, 184);
             this.lbxCustomers.TabIndex = 0;
             this.lbxCustomers.SelectedIndexChanged += new System.EventHandler(this.lbxCustomers_SelectedIndexChanged);
             // 
@@ -160,7 +165,7 @@
             // lblDeposits
             // 
             this.lblDeposits.AutoSize = true;
-            this.lblDeposits.Location = new System.Drawing.Point(12, 177);
+            this.lblDeposits.Location = new System.Drawing.Point(12, 197);
             this.lblDeposits.Name = "lblDeposits";
             this.lblDeposits.Size = new System.Drawing.Size(55, 15);
             this.lblDeposits.TabIndex = 13;
@@ -169,7 +174,7 @@
             // lblWithdrawals
             // 
             this.lblWithdrawals.AutoSize = true;
-            this.lblWithdrawals.Location = new System.Drawing.Point(13, 282);
+            this.lblWithdrawals.Location = new System.Drawing.Point(13, 302);
             this.lblWithdrawals.Name = "lblWithdrawals";
             this.lblWithdrawals.Size = new System.Drawing.Size(75, 15);
             this.lblWithdrawals.TabIndex = 14;
@@ -178,7 +183,7 @@
             // dgvDeposits
             // 
             this.dgvDeposits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeposits.Location = new System.Drawing.Point(12, 195);
+            this.dgvDeposits.Location = new System.Drawing.Point(12, 215);
             this.dgvDeposits.Name = "dgvDeposits";
             this.dgvDeposits.RowTemplate.Height = 25;
             this.dgvDeposits.Size = new System.Drawing.Size(408, 84);
@@ -187,17 +192,71 @@
             // dgvWithdrawals
             // 
             this.dgvWithdrawals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvWithdrawals.Location = new System.Drawing.Point(12, 300);
+            this.dgvWithdrawals.Location = new System.Drawing.Point(12, 320);
             this.dgvWithdrawals.Name = "dgvWithdrawals";
             this.dgvWithdrawals.RowTemplate.Height = 25;
             this.dgvWithdrawals.Size = new System.Drawing.Size(408, 84);
             this.dgvWithdrawals.TabIndex = 16;
             // 
-            // Form1
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(242, 179);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(55, 23);
+            this.btnNew.TabIndex = 17;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(303, 179);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(55, 23);
+            this.btnUpdate.TabIndex = 18;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(364, 179);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(55, 23);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnSaveXML
+            // 
+            this.btnSaveXML.Location = new System.Drawing.Point(12, 410);
+            this.btnSaveXML.Name = "btnSaveXML";
+            this.btnSaveXML.Size = new System.Drawing.Size(100, 23);
+            this.btnSaveXML.TabIndex = 20;
+            this.btnSaveXML.Text = "Save to XML";
+            this.btnSaveXML.UseVisualStyleBackColor = true;
+            this.btnSaveXML.Click += new System.EventHandler(this.btnSaveXML_Click);
+            // 
+            // btnLoadXML
+            // 
+            this.btnLoadXML.Location = new System.Drawing.Point(118, 410);
+            this.btnLoadXML.Name = "btnLoadXML";
+            this.btnLoadXML.Size = new System.Drawing.Size(100, 23);
+            this.btnLoadXML.TabIndex = 21;
+            this.btnLoadXML.Text = "Load from XML";
+            this.btnLoadXML.UseVisualStyleBackColor = true;
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 397);
+            this.ClientSize = new System.Drawing.Size(437, 439);
+            this.Controls.Add(this.btnLoadXML);
+            this.Controls.Add(this.btnSaveXML);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.dgvWithdrawals);
             this.Controls.Add(this.dgvDeposits);
             this.Controls.Add(this.lblWithdrawals);
@@ -215,7 +274,7 @@
             this.Controls.Add(this.lblFname);
             this.Controls.Add(this.lblIDDisplay);
             this.Controls.Add(this.lbxCustomers);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Banking";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeposits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWithdrawals)).EndInit();
@@ -243,5 +302,10 @@
         private Label lblWithdrawals;
         private DataGridView dgvDeposits;
         private DataGridView dgvWithdrawals;
+        private Button btnNew;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private Button btnSaveXML;
+        private Button btnLoadXML;
     }
 }

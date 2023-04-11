@@ -9,7 +9,15 @@ namespace BJM.BankingApp.BL
     public class Deposit
     {
         public int DepositID { get; set; }
-        public double Ammount { get; set;}
+        private double Amount { get; set; }
+        public string AmountFormat 
+        {
+            get { return Amount.ToString("c"); }
+        }
         public DateTime DepositDate { get; set;}
+        public void setDeposit(double amount)
+        {
+            Amount = amount;
+        }
     }
 }

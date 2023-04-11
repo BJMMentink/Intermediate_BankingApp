@@ -9,7 +9,15 @@ namespace BJM.BankingApp.BL
     public class Withdrawal
     {
         public int WithdrawlID { get; set; }
-        public double Ammount { get; set; }
+        private double Amount { get; set; }
+        public string AmountFormat
+        {
+            get { return Amount.ToString("c"); }
+        }
         public DateTime WithdrawlDate { get; set; }
+        public void setDeposit(double amount)
+        {
+            Amount = amount;
+        }
     }
 }

@@ -14,16 +14,12 @@ namespace BJM.BankingApp.UI
             {
                 Rebindustomers();
             }
-            
-
         }
-
         private void Rebindustomers()
         {
             lbxCustomers.DataSource = null;
             lbxCustomers.DataSource = customers;
         }
-
         private void lbxCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Customer? selectedCustomer = lbxCustomers.SelectedItem as Customer;
@@ -38,8 +34,6 @@ namespace BJM.BankingApp.UI
                 dgvDeposits.DataSource = selectedCustomer.DepositList;
                 dgvWithdrawals.DataSource = selectedCustomer.WithdrawalList;
             }
-            
-
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -50,10 +44,11 @@ namespace BJM.BankingApp.UI
             txtBDate.Text = string.Empty;
             lblAge.Text = string.Empty;
             lbxCustomers.SelectedIndex = -1;
+            dgvDeposits.DataSource = null;
+            dgvWithdrawals.DataSource = null;
             //lbxCustomers.SelectionMode = SelectionMode.None;
             //lbxCustomers.SelectionMode = SelectionMode.One;
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             DateTime DT;
@@ -88,31 +83,33 @@ namespace BJM.BankingApp.UI
                     }else { MessageBox.Show("Please Enter your Last Name", "ERROR"); }
                 }else { MessageBox.Show("Please Enter your First Name", "ERROR"); }
             }
-
-
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Customer? selectedCustomer = lbxCustomers.SelectedItem as Customer;
-            if (selectedCustomer != null)
+            DialogResult dialogResult = MessageBox.Show("Would you like to Delete?", "Confirm Delete", MessageBoxButtons.OKCancel);
+            if (dialogResult == DialogResult.OK)
             {
-                customers.Remove(selectedCustomer);
-                Rebindustomers();
-                lblID.Text = string.Empty;
-                txtfName.Text = string.Empty;
-                txtlName.Text = string.Empty;
-                txtSSN.Text = string.Empty;
-                txtBDate.Text = string.Empty;
-                lblAge.Text = string.Empty;
-                lbxCustomers.SelectedIndex = -1;
+                if (selectedCustomer != null)
+                {
+                    customers.Remove(selectedCustomer);
+                    Rebindustomers();
+                    lblID.Text = string.Empty;
+                    txtfName.Text = string.Empty;
+                    txtlName.Text = string.Empty;
+                    txtSSN.Text = string.Empty;
+                    txtBDate.Text = string.Empty;
+                    lblAge.Text = string.Empty;
+                    lbxCustomers.SelectedIndex = -1;
+                    dgvDeposits.DataSource = null;
+                    dgvWithdrawals.DataSource = null;
+                }
             }
-            
         }
 
         private void btnSaveXML_Click(object sender, EventArgs e)
         {
-            //customers.SaveToXML();
+            customers.SaveToXml();
         }
     }
 }

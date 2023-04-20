@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BJM.BankingApp.PL\BJM.BankingApp.PL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,6 +8,7 @@ namespace BJM.BankingApp.BL
 {
     public class Deposit
     {
+        public Deposit() { }
         public int DepositID { get; set; }
         private double Amount { get; set; }
         public string AmountFormat 

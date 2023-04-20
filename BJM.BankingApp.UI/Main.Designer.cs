@@ -246,6 +246,7 @@
             this.btnLoadXML.TabIndex = 21;
             this.btnLoadXML.Text = "Load from XML";
             this.btnLoadXML.UseVisualStyleBackColor = true;
+            this.btnLoadXML.Click += new System.EventHandler(this.btnLoadXML_Click);
             // 
             // Main
             // 

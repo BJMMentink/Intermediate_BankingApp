@@ -8,6 +8,7 @@ namespace BJM.BankingApp.BL
 {
     public class Withdrawal
     {
+        public Withdrawal() { }
         public int WithdrawlID { get; set; }
         private double Amount { get; set; }
         public string AmountFormat

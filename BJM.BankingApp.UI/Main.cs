@@ -1,4 +1,5 @@
 using BJM.BankingApp.BL;
+using BJM.BankingApp.PL;
 
 namespace BJM.BankingApp.UI
 {
@@ -8,12 +9,8 @@ namespace BJM.BankingApp.UI
         public Main()
         {
             InitializeComponent();
-            customers.PopulateTests();
+            //customers.PopulateTests();
             //customer.Sort();
-            if (customers.Count > 0)
-            {
-                Rebindustomers();
-            }
         }
         private void Rebindustomers()
         {
@@ -46,6 +43,7 @@ namespace BJM.BankingApp.UI
             lbxCustomers.SelectedIndex = -1;
             dgvDeposits.DataSource = null;
             dgvWithdrawals.DataSource = null;
+            lblID.Text = customers.GetNextID().ToString();
             //lbxCustomers.SelectionMode = SelectionMode.None;
             //lbxCustomers.SelectionMode = SelectionMode.One;
         }
@@ -110,6 +108,25 @@ namespace BJM.BankingApp.UI
         private void btnSaveXML_Click(object sender, EventArgs e)
         {
             customers.SaveToXml();
+        }
+
+        private void btnLoadXML_Click(object sender, EventArgs e)
+        {
+            Type type = typeof(CustomerCollection);
+
+            try
+            {
+                CustomerCollection? temp = DataAccess.LoadXml(type) as CustomerCollection;
+                customers = (temp != null) ? temp : new CustomerCollection();
+            }
+            catch
+            {
+                customers = new CustomerCollection();
+            }
+            if (customers.Count > 0)
+            {
+                Rebindustomers();
+            }
         }
     }
 }

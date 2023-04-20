@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BJM.BankingApp.PL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -86,9 +87,26 @@ namespace BJM.BankingApp.BL
 
 
         }
+        public CustomerCollection()
+        {
+            DataAccess.XMLFilePath = "customers.xml";
+        }
         public void SaveToXml()
         {
-            //DataAccess.SaveXml(typeof(CustomerCollection), this);
+            DataAccess.SaveXML(typeof(CustomerCollection), this);
+
+        }
+        public int GetNextID()
+        {
+            int temp1 = 0;
+            foreach (Customer customer in this)
+            {
+                if(customer.CustomerID >= temp1)
+                {
+                    temp1 = customer.CustomerID;    
+                }
+            }
+            return temp1 + 1;
         }
     }
 }

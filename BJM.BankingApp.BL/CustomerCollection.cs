@@ -1,6 +1,7 @@
 ﻿using BJM.BankingApp.PL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,6 +91,7 @@ namespace BJM.BankingApp.BL
         public CustomerCollection()
         {
             DataAccess.XMLFilePath = "customers.xml";
+            DataAccess.ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
         public void SaveToXml()
         {
@@ -107,6 +109,15 @@ namespace BJM.BankingApp.BL
                 }
             }
             return temp1 + 1;
+        }
+        public void LoadFromDB()
+        {
+            string sql = "SELECT * FROM customers";
+            DataTable table = DataAccess.SelectFromDB(sql);
+            foreach (DataRow row in table.Rows)
+            {
+                Add(new Customer(row));
+            }
         }
     }
 }

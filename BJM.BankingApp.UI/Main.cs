@@ -9,6 +9,8 @@ namespace BJM.BankingApp.UI
         public Main()
         {
             InitializeComponent();
+            customers.LoadFromDB();
+            Rebindustomers();
             //customers.PopulateTests();
             //customer.Sort();
         }
@@ -28,9 +30,16 @@ namespace BJM.BankingApp.UI
                 txtSSN.Text = selectedCustomer.SSN;
                 txtBDate.Text = selectedCustomer.BirthDate.ToString("MM/dd/yyyy");
                 lblAge.Text = selectedCustomer.Age.ToString();
-                dgvDeposits.DataSource = selectedCustomer.DepositList;
-                dgvWithdrawals.DataSource = selectedCustomer.WithdrawalList;
+                selectedCustomer.LoadTransactionsFromDB();
+                RebindTransactions(selectedCustomer.DepositList, selectedCustomer.WithdrawalList);
             }
+        }
+        private void RebindTransactions(List<Deposit> Deposit, List<Withdrawal> Withdrawal)
+        {
+            dgvDeposits.DataSource = null;
+            dgvDeposits.DataSource = Deposit;
+            dgvWithdrawals.DataSource = null;
+            dgvWithdrawals.DataSource = Withdrawal;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -41,8 +50,8 @@ namespace BJM.BankingApp.UI
             txtBDate.Text = string.Empty;
             lblAge.Text = string.Empty;
             lbxCustomers.SelectedIndex = -1;
-            dgvDeposits.DataSource = null;
-            dgvWithdrawals.DataSource = null;
+            dgvDeposits.DataSource = null; // needed
+            dgvWithdrawals.DataSource = null; // needed
             lblID.Text = customers.GetNextID().ToString();
             //lbxCustomers.SelectionMode = SelectionMode.None;
             //lbxCustomers.SelectionMode = SelectionMode.One;
@@ -60,7 +69,9 @@ namespace BJM.BankingApp.UI
                     selectedCustomer.LastName = txtlName.Text;
                     selectedCustomer.SSN = txtSSN.Text;
                     selectedCustomer.BirthDate =  DT;
+                    selectedCustomer.UpdateIntoDB();
                     Rebindustomers();
+                    
                 }
                 else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); }
             }
@@ -75,8 +86,10 @@ namespace BJM.BankingApp.UI
                                 customer.LastName = txtlName.Text;
                                 customer.SSN = txtSSN.Text;
                                 customers.Add(customer);
+                                customer.InsertIntoDB();
                                 Rebindustomers();
-                            }else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); }
+                            }
+                            else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); }
                         }else { MessageBox.Show("Please Enter your SSN", "ERROR"); }
                     }else { MessageBox.Show("Please Enter your Last Name", "ERROR"); }
                 }else { MessageBox.Show("Please Enter your First Name", "ERROR"); }
@@ -91,6 +104,7 @@ namespace BJM.BankingApp.UI
                 if (selectedCustomer != null)
                 {
                     customers.Remove(selectedCustomer);
+                    selectedCustomer.DeleteFromDB();
                     Rebindustomers();
                     lblID.Text = string.Empty;
                     txtfName.Text = string.Empty;

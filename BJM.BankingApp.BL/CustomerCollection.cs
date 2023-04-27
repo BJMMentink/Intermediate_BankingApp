@@ -19,7 +19,7 @@ namespace BJM.BankingApp.BL
             Deposit deposit;
 
 
-            customer = new Customer();
+            customer = new Customer(); // creates a hard coded test customer
             customer.CustomerID = 1;
             customer.FirstName= "Bobby";
             customer.LastName= "Robertson";
@@ -28,21 +28,21 @@ namespace BJM.BankingApp.BL
             customer.WithdrawalList= withdrawalList;
             customer.DepositList= depositList;
             
-            withdrawal = new Withdrawal();
+            withdrawal = new Withdrawal(); // creates a hard coded withdrawl set
             withdrawal.WithdrawlID = 1;
             withdrawal.WithdrawlDate = new DateTime(2023, 04, 09);
             withdrawal.setDeposit(100.55);
             withdrawalList.Add(withdrawal);
 
-            deposit = new Deposit();
+            deposit = new Deposit(); // creates a hard coded deposit set
             deposit.DepositID = 1;
             deposit.DepositDate = new DateTime(2023, 04, 08);
             deposit.setDeposit(100.55);
             depositList.Add(deposit);
             Add(customer);
 
-            List<Deposit> depositList1 = new List<Deposit>();
-            List<Withdrawal> withdrawalList1 = new List<Withdrawal>();
+            List<Deposit> depositList1 = new List<Deposit>(); // creates new list deposit
+            List<Withdrawal> withdrawalList1 = new List<Withdrawal>(); // creates new list for withdrawl
             customer = new Customer();
             customer.CustomerID = 2;
             customer.FirstName = "Robby";
@@ -95,20 +95,20 @@ namespace BJM.BankingApp.BL
         }
         public void SaveToXml()
         {
-            DataAccess.SaveXML(typeof(CustomerCollection), this);
-
+            DataAccess.SaveXML(typeof(CustomerCollection), this); // calls the saveXML
         }
         public int GetNextID()
         {
             int temp1 = 0;
-            foreach (Customer customer in this)
+            foreach (Customer customer in this) // checks every customer in this customer list
             {
-                if(customer.CustomerID >= temp1)
+                if(customer.CustomerID >= temp1) // checks if the id is greater then the last one
                 {
-                    temp1 = customer.CustomerID;    
+                    temp1 = customer.CustomerID; // sets the highest id to temp1
                 }
             }
-            return temp1 + 1;
+            return temp1 + 1; // returns the highest id + 1
+
         }
         public void LoadFromDB()
         {

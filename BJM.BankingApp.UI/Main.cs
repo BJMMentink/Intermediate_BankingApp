@@ -16,8 +16,8 @@ namespace BJM.BankingApp.UI
         }
         private void Rebindustomers()
         {
-            lbxCustomers.DataSource = null;
-            lbxCustomers.DataSource = customers;
+            lbxCustomers.DataSource = null; // unbinds Customer
+            lbxCustomers.DataSource = customers; // Rebinds Customer
         }
         private void lbxCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -43,15 +43,15 @@ namespace BJM.BankingApp.UI
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            lblID.Text = string.Empty;
+            lblID.Text = string.Empty; // Clears text
             txtfName.Text = string.Empty;
             txtlName.Text = string.Empty;  
             txtSSN.Text = string.Empty;
             txtBDate.Text = string.Empty;
             lblAge.Text = string.Empty;
             lbxCustomers.SelectedIndex = -1;
-            dgvDeposits.DataSource = null; // needed
-            dgvWithdrawals.DataSource = null; // needed
+            dgvDeposits.DataSource = null;
+            dgvWithdrawals.DataSource = null;
             lblID.Text = customers.GetNextID().ToString();
             //lbxCustomers.SelectionMode = SelectionMode.None;
             //lbxCustomers.SelectionMode = SelectionMode.One;
@@ -61,32 +61,30 @@ namespace BJM.BankingApp.UI
             DateTime DT;
             Customer customer = new Customer();
             Customer? selectedCustomer = lbxCustomers.SelectedItem as Customer;
-            if (selectedCustomer != null)
+            if (selectedCustomer != null) // if there is a customer selected (updating current customer)
             {
-                if (DateTime.TryParse(txtBDate.Text, out DT))
+                if (DateTime.TryParse(txtBDate.Text, out DT)) // if bdate is in the correct format
                 {
                     selectedCustomer.FirstName = txtfName.Text;
                     selectedCustomer.LastName = txtlName.Text;
                     selectedCustomer.SSN = txtSSN.Text;
                     selectedCustomer.BirthDate =  DT;
-                    selectedCustomer.UpdateIntoDB();
                     Rebindustomers();
                     
                 }
-                else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); }
+                else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); } 
             }
-            else
-            {if (txtfName.Text != string.Empty)
-                {if (txtlName.Text != string.Empty)
-                    {if (txtSSN.Text != string.Empty)
-                        {if (DateTime.TryParse(txtBDate.Text, out DT))
+            else // (creating a new customer)
+            {if (txtfName.Text != string.Empty) // checks if fname is empty
+                {if (txtlName.Text != string.Empty) // checks if lname is empty
+                    {if (txtSSN.Text != string.Empty) // checks if SSN is empty
+                        {if (DateTime.TryParse(txtBDate.Text, out DT)) // checks if bdate is in the correct format
                             {
                                 customer.BirthDate = DT;
                                 customer.FirstName = txtfName.Text;
                                 customer.LastName = txtlName.Text;
                                 customer.SSN = txtSSN.Text;
                                 customers.Add(customer);
-                                customer.InsertIntoDB();
                                 Rebindustomers();
                             }
                             else { MessageBox.Show("Birthdate is in incorrect format, please use MM/dd/yyyy", "ERROR"); }
@@ -104,9 +102,8 @@ namespace BJM.BankingApp.UI
                 if (selectedCustomer != null)
                 {
                     customers.Remove(selectedCustomer);
-                    selectedCustomer.DeleteFromDB();
                     Rebindustomers();
-                    lblID.Text = string.Empty;
+                    lblID.Text = string.Empty; // see add btn 
                     txtfName.Text = string.Empty;
                     txtlName.Text = string.Empty;
                     txtSSN.Text = string.Empty;
@@ -121,7 +118,7 @@ namespace BJM.BankingApp.UI
 
         private void btnSaveXML_Click(object sender, EventArgs e)
         {
-            customers.SaveToXml();
+            customers.SaveToXml(); // calls save to xml
         }
 
         private void btnLoadXML_Click(object sender, EventArgs e)
@@ -141,6 +138,7 @@ namespace BJM.BankingApp.UI
             {
                 Rebindustomers();
             }
+
         }
     }
 }
